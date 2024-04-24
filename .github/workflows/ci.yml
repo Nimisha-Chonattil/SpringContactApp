@@ -28,13 +28,10 @@ jobs:
            name: "spring-contact-app"
            path: target/*.war
        - run: echo "${{ github.event.inputs.ARTIFACT_VERSION }}"
-    # Sonarcloud Scan:
-    #   runs-on: ubuntu-latest
-    #   steps:
-        - name: Sonar cloud scan
-          uses: sonarsource/sonarcloud-github-action@master
-          env:
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+       - name: Sonar cloud scan
+         uses: sonarsource/sonarcloud-github-action@master
+         env:
+           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   
     Upload_to_release: 
       needs: build
