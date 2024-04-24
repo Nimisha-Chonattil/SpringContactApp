@@ -26,16 +26,22 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+
+       - name: Build package
+         run: mvn clean package
+
        - name: Sonar cloud scan
          uses: sonarsource/sonarcloud-github-action@master
          env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+           
        - name: Uploading artifacts to github
          uses: actions/upload-artifact@v3
          with: 
            name: "spring-contact-app"
            path: target/*.war
-       - run: echo "${{ github.event.inputs.ARTIFACT_VERSION }}"
+      #  - run: echo "${{ github.event.inputs.ARTIFACT_VERSION }}"
       
   
     # Upload_to_release: 
