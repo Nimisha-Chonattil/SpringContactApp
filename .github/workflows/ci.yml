@@ -28,14 +28,14 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
        - name: Build package
-         run: mvn clean package
+         run: mvn clean package sonar:sonar
 
        - name: Sonar cloud scan
          uses: sonarsource/sonarcloud-github-action@master
          env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-           
+
        - name: Uploading artifacts to github
          uses: actions/upload-artifact@v3
          with: 
