@@ -21,7 +21,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
        - name: Creating war artifacts using maven
-         run: mvn package
+         run: mvn clean package
        - name: Uploading artifacts to github
          uses: actions/upload-artifact@v3
          with: 
