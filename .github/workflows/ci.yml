@@ -1,5 +1,6 @@
 name: SonarCloud
 on: workflow_dispatch
+run-name: maven plugin change
 jobs:
   build:
     name: Build and analyze
