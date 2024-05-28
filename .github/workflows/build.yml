@@ -1,0 +1,14 @@
+name: Build
+on: 
+  workflow_dispatch:
+jobs: 
+  myfirstjob:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello"
+
+  mysecondjob:
+    needs: myfirstjob
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Bye"
