@@ -15,6 +15,12 @@ jobs:
           java-version: '11'
       - name: Building application
         run: mvn clean install -DskipTests
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: new-app
+          path: target/*.war
     
   my_second_job:
      needs: my_first_job
